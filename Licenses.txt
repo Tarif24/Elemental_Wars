@@ -1,0 +1,4 @@
+- Clembod (Bringer of Death - Character asset)
+- Cainos (Pixel Art Top Down Basic - Enviorment asset)
+- JTN191 (WalkingOnGrass - Audio Asset)
+- SoftDistortionFX (WalkingOnPavement - Audio Asset)

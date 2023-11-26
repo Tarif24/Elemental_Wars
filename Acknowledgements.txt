@@ -1,0 +1,31 @@
+- Acknowledgement 1
+Name:Rehope Games
+Type:Video
+Help:"Showed me how to make buttons"
+Link:https://www.youtube.com/watch?v=DX7HyN7oJjE&ab_channel=RehopeGames
+
+- Acknowledgement 2
+Name:Bilal
+Type:Video
+Help:"Showed me how to make and use animations using a sprite sheet"
+Link:https://www.youtube.com/watch?v=_rrcoptdnqE&ab_channel=Bilal
+
+- Acknowledgement 3
+Name:Sunny Valley Studio
+Type:Video
+Help:"Showed me a way that i can save data between scenes"
+Link:https:https://www.youtube.com/watch?v=MBM_4zrQHao&ab_channel=SunnyValleyStudio
+
+- Acknowledgement 4
+Name:Game Dev Experiments
+Type:Video
+Help:"Showed me how to implement a UI system that is dynamicly updatable"
+Link:https://www.youtube.com/watch?v=zKRMkD28-xY
+
+- Acknowledgement 5
+Name:Game Dev Experiments
+Type:Video
+Help:"Showed me how to create the skeleton and state system of a basic turn based game"
+Link:https://www.youtube.com/watch?v=joJTzYM72Dg
+
+ 
