@@ -55,22 +55,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
-
-        if (horizontalInput == 0 && verticalInput == 0)
+        if (!isInEncounter)
         {
-            isMoving = false;    
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float verticalInput = Input.GetAxisRaw("Vertical");
+
+            if (horizontalInput == 0 && verticalInput == 0)
+            {
+                isMoving = false;
+            }
+            else
+            {
+                isMoving = true;
+            }
+
+            Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
+            Vector2 normalizedinput = inputVector.normalized;
+
+            transform.position += new Vector3(normalizedinput.x * moveSpeed, normalizedinput.y * moveSpeed, 0) * Time.deltaTime;
         }
         else
         {
-            isMoving = true;
+            isMoving = false;
         }
-
-        Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
-        Vector2 normalizedinput = inputVector.normalized;
-
-        transform.position += new Vector3(normalizedinput.x * moveSpeed, normalizedinput.y * moveSpeed, 0) * Time.deltaTime;
 
         if (SafeTimer <= 0f && isSafe && !isInEncounter)
         {
