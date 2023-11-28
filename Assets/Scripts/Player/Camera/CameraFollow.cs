@@ -11,6 +11,11 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 vel = Vector3.zero;
 
+    private void Start()
+    {
+        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+    }
+
     private void FixedUpdate()
     {
         if (target == null)
