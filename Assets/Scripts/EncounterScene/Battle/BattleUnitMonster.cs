@@ -13,7 +13,35 @@ public class BattleUnitMonster : MonoBehaviour
 
     public ElementalMonster monster {  get; set; }
 
+    public bool isBoss = false;
+
+    public int[] bossLevels;
+    public ElementalMonsterBase[] bossBases;
+
     public void SetUp()
+    {
+        if (isBoss)
+        {
+            BossSetUp();
+        }
+        else
+        {
+            MonsterSetUp();
+        }
+    }
+
+    void BossSetUp()
+    {
+        PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        main = bossBases[player.bossTier];
+        monster = new ElementalMonster(main, bossLevels[player.bossTier]);
+
+        GetComponent<Image>().sprite = monster.main.MonsterSprite;
+
+    }
+
+    void MonsterSetUp()
     {
         monster = new ElementalMonster(main, level);
 

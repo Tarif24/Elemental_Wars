@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RandomEncounter.unity
     guid: e8b0a6122b4f49d4b9d1577bf12a85a6
+  - enabled: 1
+    path: Assets/Scenes/BossEncounter.unity
+    guid: 035802f3949aefb4c9644776a179133c
   m_configObjects: {}

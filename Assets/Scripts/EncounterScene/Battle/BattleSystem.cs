@@ -36,8 +36,15 @@ public class BattleSystem : MonoBehaviour
         enemyHUD.SetData(enemyUnit.monster);
 
         dialogBox.SetMoveNames(playerUnit.player.Abilities);
-
-        yield return StartCoroutine(dialogBox.TypeDialog($"A wild {enemyUnit.monster.main.Name} has appeared."));
+        if (enemyUnit.isBoss)
+        {
+            yield return StartCoroutine(dialogBox.TypeDialog($"A BOSS BATTLE HAS BEGUN WITH {enemyUnit.monster.main.Name} !"));
+        }
+        else
+        {
+            yield return StartCoroutine(dialogBox.TypeDialog($"A wild {enemyUnit.monster.main.Name} has appeared."));
+        }
+        
         yield return new WaitForSeconds(2f);
 
         PlayerAction();
@@ -104,6 +111,18 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.monster.main.Name} has been slayin");
+
+            playerUnit.player.isInEncounter = false;
+
+            if (enemyUnit.isBoss)
+            {
+                playerUnit.player.bossTier++;
+                SceneManager.UnloadSceneAsync(4);
+            }
+            else 
+            {
+                SceneManager.UnloadSceneAsync(2);
+            }
         }
         else
         {
@@ -195,7 +214,14 @@ public class BattleSystem : MonoBehaviour
             {
                 playerUnit.player.isInEncounter = false;
              
-                SceneManager.UnloadSceneAsync(2);
+                if (enemyUnit.isBoss)
+                {
+                    SceneManager.UnloadSceneAsync(4);
+                }
+                else
+                {
+                    SceneManager.UnloadSceneAsync(2);
+                }
             }
         }
     }

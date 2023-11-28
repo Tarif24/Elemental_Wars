@@ -1874,8 +1874,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 359.29053, y: 157}
-  m_SizeDelta: {x: -757.0589, y: -390.067}
+  m_AnchoredPosition: {x: 359.29053, y: 146.48}
+  m_SizeDelta: {x: -757.0589, y: -369.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &711743666
 MonoBehaviour:
@@ -2329,8 +2329,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -279, y: 154}
-  m_SizeDelta: {x: -782.6728, y: -390.067}
+  m_AnchoredPosition: {x: -279, y: 140.60675}
+  m_SizeDelta: {x: -782.6728, y: -363.2805}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075244885
 MonoBehaviour:
@@ -3005,6 +3005,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   main: {fileID: 11400000, guid: c27c603bd55e85e4c809d2f8c79a15b7, type: 2}
   level: 7
+  isBoss: 1
+  bossLevels: 0a000000140000001e0000002800000032000000
+  bossBases:
+  - {fileID: 11400000, guid: 06b90d51e5b718640bf467833444ec46, type: 2}
+  - {fileID: 11400000, guid: 7dd549c60c8676e48887e7c6df5f027e, type: 2}
+  - {fileID: 11400000, guid: eba52b0e259ea044e997d1e6110c86ac, type: 2}
+  - {fileID: 11400000, guid: 68cad71ca821a9e49b44c0617169b5ac, type: 2}
+  - {fileID: 11400000, guid: 63e18b91d26dcb14d929a9ce78a7763a, type: 2}
 --- !u!114 &1530192042
 MonoBehaviour:
   m_ObjectHideFlags: 0
