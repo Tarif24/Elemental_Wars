@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,6 +42,14 @@ public class PlayerController : MonoBehaviour
 
     public int bossTier = 0;
 
+    public int XP;
+    public int elementalCoins = 0;
+
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI coinsText;
+    public GameObject healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +60,11 @@ public class PlayerController : MonoBehaviour
             transform.position = SO_SaveData.saveLocation;
         }
 
+        XP = level * 100;
+
         playerAudio = GetComponent<AudioSource>();
+
+        nameText.text = "Player: " + name;
     }
 
     // Update is called once per frame
@@ -105,6 +118,8 @@ public class PlayerController : MonoBehaviour
             playerAudio.Stop();
         }
 
+        level = XP / 100;
+        UpdateHUD();
     }
 
     public List<AbilitiesBase> Abilities
@@ -178,5 +193,14 @@ public class PlayerController : MonoBehaviour
                 playerAudio.Stop();
             }
         }
+    }
+
+    void UpdateHUD()
+    {
+        float hpNormalized = (float) Hp / MaxHP;
+        healthBar.transform.localScale = new Vector3(hpNormalized, 1f);
+
+        levelText.text = "Level: " + level;
+        coinsText.text = "Elemental Coins: " + elementalCoins;
     }
 }
