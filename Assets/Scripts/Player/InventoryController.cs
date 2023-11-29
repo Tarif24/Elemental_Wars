@@ -49,7 +49,7 @@ public class InventoryController : MonoBehaviour
 
     public void HealthPotions()
     {
-        if (player.healthPotions > 0)
+        if (player.healthPotions > 0 && player.HP < player.MaxHP)
         {
             player.HP = player.MaxHP;
             player.healthPotions--;
