@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public string[] typesOfGroundTags;
 
     public bool isInEncounter = false;
+    public bool isInNewPlayer = false;
 
     public int bossTier = 0;
 
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isInEncounter)
+        if (!isInEncounter && !isInNewPlayer)
         {
             float horizontalInput = Input.GetAxisRaw("Horizontal");
             float verticalInput = Input.GetAxisRaw("Vertical");
@@ -147,6 +148,7 @@ public class PlayerController : MonoBehaviour
     public string Name
     {
         get { return name; }
+        set { name = value; }
     }
 
     public int MaxHP
@@ -234,7 +236,6 @@ public class PlayerController : MonoBehaviour
 
             foreach (AbilitiesBase a in allAbilities)
             {
-                Debug.Log(a.Name + ',' + line);
                 if (a.Name == line)
                 {
                     abilities.Add(a);

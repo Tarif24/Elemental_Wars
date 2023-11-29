@@ -79,7 +79,7 @@ public class InventoryController : MonoBehaviour
 
         titleText.text = "Stats";
 
-        nameText.text = "Name - " + player.name;
+        nameText.text = "Name - " + player.Name;
         levelText.text = "Level - " + player.Level;
         healthText.text = "Health - " + player.HP + "/" + player.MaxHP;
         attackText.text = "Attack - " + player.Attack;
