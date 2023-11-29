@@ -36,6 +36,21 @@ public class BattleSystem : MonoBehaviour
         enemyHUD.SetData(enemyUnit.monster);
 
         dialogBox.SetMoveNames(playerUnit.player.Abilities);
+
+        if (playerUnit.player.HP <= 0)
+        {
+            yield return StartCoroutine(dialogBox.TypeDialog("Your health is at a critical level please go to the shop and buy a health potion"));
+
+            if (enemyUnit.isBoss)
+            {
+                SceneManager.UnloadSceneAsync(4);
+            }
+            else
+            {
+                SceneManager.UnloadSceneAsync(2);
+            }
+        }
+
         if (enemyUnit.isBoss)
         {
             yield return StartCoroutine(dialogBox.TypeDialog($"A BOSS BATTLE HAS BEGUN WITH {enemyUnit.monster.main.Name} !"));
@@ -111,16 +126,33 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.monster.main.Name} has been slayin");
+            yield return new WaitForSeconds(2f);
 
             playerUnit.player.isInEncounter = false;
 
             if (enemyUnit.isBoss)
             {
                 playerUnit.player.bossTier++;
+                int XPTemp = 100 * (playerUnit.player.currentTierLocation + 1);
+                playerUnit.player.XP += XPTemp;
+                int coinsTemp = 250 * (playerUnit.player.currentTierLocation + 1);
+                playerUnit.player.elementalCoins += coinsTemp;
+
+                yield return dialogBox.TypeDialog($"You have recived {XPTemp} XP and {coinsTemp} elemental coins");
+                yield return new WaitForSeconds(3f);
+
                 SceneManager.UnloadSceneAsync(4);
             }
             else 
             {
+                int XPTemp = 25 * (playerUnit.player.currentTierLocation + 1);
+                playerUnit.player.XP += XPTemp;
+                int coinsTemp = 50 * (playerUnit.player.currentTierLocation + 1);
+                playerUnit.player.elementalCoins += coinsTemp;
+
+                yield return dialogBox.TypeDialog($"You have recived {XPTemp} XP and {coinsTemp} elemental coins");
+                yield return new WaitForSeconds(3f);
+
                 SceneManager.UnloadSceneAsync(2);
             }
         }

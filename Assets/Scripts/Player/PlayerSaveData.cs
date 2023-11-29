@@ -5,7 +5,24 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SO_PlayerSaveData : ScriptableObject
 {
-    public bool isSafe = false;
+    [SerializeField]
+    public bool isSafe;
+    [SerializeField]
     public Vector3 saveLocation;
-    public bool isSaveGame = false;
+    [SerializeField]
+    public bool isSaveGame;
+    [SerializeField]
+    public string name;
+    [SerializeField]
+    public List<AbilitiesBase> abilities;
+    [SerializeField]
+    public int level;
+    [SerializeField]
+    public int elementalCoins;
+    [SerializeField]
+    public int bossTier;
+    [SerializeField]
+    public int hp;
+    [SerializeField]
+    public int currentTierLocation;
 }

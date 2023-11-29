@@ -8,6 +8,9 @@ public class StartMenuController : MonoBehaviour
 {
     public SO_PlayerSaveData saveData;
 
+    public GameObject menu;
+    public GameObject credits;
+
     public void NewGame()
     {
         saveData.isSaveGame = false;
@@ -18,5 +21,23 @@ public class StartMenuController : MonoBehaviour
     {
         saveData.isSaveGame = true;
         SceneManager.LoadScene(1);
+    }
+
+    public void Credits()
+    {
+        menu.SetActive(false);
+        credits.SetActive(true);
+    }
+
+    public void MainMenu()
+    {
+        menu.SetActive(true);
+        credits.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
     }
 }

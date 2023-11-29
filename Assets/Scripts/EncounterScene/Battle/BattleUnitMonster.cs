@@ -8,8 +8,9 @@ public class BattleUnitMonster : MonoBehaviour
     [SerializeField]
     ElementalMonsterBase main;
 
-    [SerializeField]
     int level;
+
+    PlayerController player;
 
     public ElementalMonster monster {  get; set; }
 
@@ -20,6 +21,8 @@ public class BattleUnitMonster : MonoBehaviour
 
     public void SetUp()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
         if (isBoss)
         {
             BossSetUp();
@@ -32,10 +35,8 @@ public class BattleUnitMonster : MonoBehaviour
 
     void BossSetUp()
     {
-        PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
-        main = bossBases[player.bossTier];
-        monster = new ElementalMonster(main, bossLevels[player.bossTier]);
+        main = bossBases[player.currentTierLocation];
+        monster = new ElementalMonster(main, bossLevels[player.currentTierLocation]);
 
         GetComponent<Image>().sprite = monster.main.MonsterSprite;
 
@@ -43,6 +44,27 @@ public class BattleUnitMonster : MonoBehaviour
 
     void MonsterSetUp()
     {
+        switch (player.currentTierLocation)
+        {
+            case 0:
+                level = Random.Range(1, 10);
+                break;
+            case 1:
+                level = Random.Range(10, 20);
+                break;
+            case 2:
+                level = Random.Range(20, 30);
+                break;
+            case 3:
+                level = Random.Range(30, 40);
+                break;
+            case 4:
+                level = Random.Range(40, 50);
+                break;
+            default:
+                break;
+        }
+
         monster = new ElementalMonster(main, level);
 
         GetComponent<Image>().sprite = monster.main.MonsterSprite;

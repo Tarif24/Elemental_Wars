@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
     public Rigidbody2D rb;
-    public SO_PlayerSaveData SO_SaveData;
+    public SO_PlayerSaveData saveData;
     public bool isSafe;
 
     [SerializeField]
@@ -50,14 +50,23 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI coinsText;
     public GameObject healthBar;
 
+    public int currentTierLocation = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         Hp = MaxHP;
 
-        if (SO_SaveData.isSaveGame)
+        if (saveData.isSaveGame)
         {
-            transform.position = SO_SaveData.saveLocation;
+            transform.position = saveData.saveLocation;
+            name = saveData.name;
+            abilities = saveData.abilities;
+            level = saveData.level;
+            elementalCoins = saveData.elementalCoins;
+            bossTier = saveData.bossTier;
+            Hp = saveData.hp;
+            currentTierLocation = saveData.currentTierLocation;
         }
 
         XP = level * 100;
@@ -173,9 +182,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SaveLocation()
+    public void Save()
     {
-        SO_SaveData.saveLocation = transform.position;
+        saveData.saveLocation = transform.position;
+        saveData.name = name;
+        saveData.abilities = abilities;
+        saveData.level = level;
+        saveData.elementalCoins = elementalCoins;
+        saveData.bossTier = bossTier;
+        saveData.hp = Hp;
+        saveData.currentTierLocation = currentTierLocation;
     }
 
     public void MainMenu()
