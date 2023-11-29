@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fire Blast
   type: 1
-  damage: 25
+  damage: 40

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8168e54e1e678f847bd571efacffcf46, type: 3}
+  m_Name: Inferno
+  m_EditorClassIdentifier: 
+  name: Inferno
+  monsterSprite: {fileID: 21300000, guid: d6e91dc898fa939468641da697d8b3bd, type: 3}
+  type: 1
+  maxHP: 100
+  attack: 45
+  defense: 35
+  abilities:
+  - {fileID: 11400000, guid: b3b779ba64f1c0a42ba49a113c2bd469, type: 2}
+  - {fileID: 11400000, guid: 5a921c827f07a51498878b0b8f1d1376, type: 2}
+  - {fileID: 11400000, guid: 8df1825c6ea9904498fbfc2925d64b41, type: 2}

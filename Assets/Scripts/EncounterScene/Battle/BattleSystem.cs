@@ -93,6 +93,8 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableAbilitySelector(true);
 
         dialogBox.SetMoveNames(enemyUnit.monster.Abilities);
+
+        currentAbility = 0;
     }
 
     IEnumerator PreformEnemyMove()
@@ -139,7 +141,7 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"{enemyUnit.monster.main.Name} has been slayin");
             yield return new WaitForSeconds(2f);
 
-            yield return dialogBox.TypeDialog($"Now take an ability from {enemyUnit.monster.main.name}");
+            yield return dialogBox.TypeDialog($"Now take an ability from {enemyUnit.monster.main.Name}");
             yield return new WaitForSeconds(2f);
 
             PlayerChoice();
@@ -158,7 +160,7 @@ public class BattleSystem : MonoBehaviour
 
         playerUnit.player.Abilities.Insert(0, ability);
 
-        yield return dialogBox.TypeDialog($"You have taken the {ability.name} ability from {enemyUnit.monster.main.Name}");
+        yield return dialogBox.TypeDialog($"You have taken the {ability.Name} ability from {enemyUnit.monster.main.Name}");
         yield return new WaitForSeconds(3f);
 
         playerUnit.player.isInEncounter = false;
@@ -250,8 +252,6 @@ public class BattleSystem : MonoBehaviour
 
     void HandleAbilityChoiceSelection()
     {
-        currentAbility = 0;
-
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (currentAbility < enemyUnit.monster.Abilities.Count - 1)

@@ -11,6 +11,8 @@ public class BattleHudMonster : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI levelText;
     [SerializeField]
+    TextMeshProUGUI typeText;
+    [SerializeField]
     HPBar hpBar;
 
     ElementalMonster Monster;
@@ -21,6 +23,7 @@ public class BattleHudMonster : MonoBehaviour
 
         nameText.text = monster.main.Name;
         levelText.text = "Level " + monster.level;
+        typeText.text = "Type " + monster.main.Type.ToString();
         hpBar.SetHP((float) monster.HP / monster.MaxHP);
     }
 

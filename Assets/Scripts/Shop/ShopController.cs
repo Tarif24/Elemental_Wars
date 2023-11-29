@@ -33,12 +33,14 @@ public class ShopController : MonoBehaviour
     public void OpenShop()
     {
         shop.SetActive(true);
+        player.isBusy = true;
         Time.timeScale = 0;
     }
 
     public void CloseShop()
     {
         shop.SetActive(false);
+        player.isBusy = false;
         Time.timeScale = 1;
     }
 
@@ -73,35 +75,35 @@ public class ShopController : MonoBehaviour
 
     public void Fire()
     {
-        player.type = ElementalMonsterType.Fire;
+        player.ChangeType(ElementalMonsterType.Fire);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
     }
 
     public void Air()
     {
-        player.type = ElementalMonsterType.Air;
+        player.ChangeType(ElementalMonsterType.Air);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
     }
 
     public void Water()
     {
-        player.type = ElementalMonsterType.Water;
+        player.ChangeType(ElementalMonsterType.Water);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
     }
 
     public void Earth()
     {
-        player.type = ElementalMonsterType.Earth;
+        player.ChangeType(ElementalMonsterType.Earth);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
     }
 
     public void Electric()
     {
-        player.type = ElementalMonsterType.Electric;
+        player.ChangeType(ElementalMonsterType.Electric);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
     }

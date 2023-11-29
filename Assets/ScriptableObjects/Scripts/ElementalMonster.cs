@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class ElementalMonster
@@ -22,22 +23,50 @@ public class ElementalMonster
 
     public int Attack
     {
-        get { return main.Attack; }
+        get { return main.Attack + (level - 1) * 10; }
     }
 
     public int Defense
     {
-        get { return main.Defense; }
+        get { return main.Defense + (level - 1) * 10; }
     }
 
     public int MaxHP
     {
-        get { return main.MaxHP; }
+        get { return main.MaxHP + (level - 1) * 10; }
     }
 
     public bool TakeDamage(AbilitiesBase ability, PlayerController player)
     {
-        HP -= ability.Damage;
+        float damage = ability.Damage;
+
+        if (Defense > player.Attack)
+        {
+            damage *= 0.7f;
+        }
+        else
+        {
+            damage *= 0.9f;
+        }
+
+        damage += (player.Attack * 0.15f);
+
+        if (ability.Type == player.type)
+        {
+            damage *= 1.25f;
+        }
+
+        if (ability.Type == main.Strength)
+        {
+            damage *= 0.75f;
+        }
+        else if (ability.Type == main.Weakness)
+        {
+            damage *= 1.25f;
+        }
+
+
+        HP -= (int)damage;
 
         if (HP <= 0)
         {

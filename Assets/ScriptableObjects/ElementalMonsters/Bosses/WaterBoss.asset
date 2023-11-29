@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8168e54e1e678f847bd571efacffcf46, type: 3}
   m_Name: WaterBoss
   m_EditorClassIdentifier: 
-  name: Water
-  monsterSprite: {fileID: 21300000, guid: 16994175aa87f494684f2c243a775406, type: 3}
+  name: Gyarados
+  monsterSprite: {fileID: 21300000, guid: d44c5da069fd093419dd79685320d17c, type: 3}
   type: 2
-  maxHP: 100
-  attack: 50
-  defense: 50
+  maxHP: 75
+  attack: 40
+  defense: 60
   abilities:
-  - {fileID: 11400000, guid: 969f0dc4d28f8ec45a5e5f64da067c0e, type: 2}
+  - {fileID: 11400000, guid: 7fbbd5ee74d095a46999da539c63e8e5, type: 2}
+  - {fileID: 11400000, guid: 3faa9f438467dbc49801c69d51cbe096, type: 2}
+  - {fileID: 11400000, guid: c2951f3e2f313594e85bd1ce9f307ab4, type: 2}
+  - {fileID: 11400000, guid: 044de387a7f170443a01e5a8948c1730, type: 2}

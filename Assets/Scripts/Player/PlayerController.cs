@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     public string[] typesOfGroundTags;
 
     public bool isInEncounter = false;
-    public bool isInNewPlayer = false;
+    public bool isBusy = false;
 
     public int bossTier = 0;
 
@@ -67,6 +67,8 @@ public class PlayerController : MonoBehaviour
 
 
     public ElementalMonsterType type = ElementalMonsterType.None;
+    public ElementalMonsterType strength = ElementalMonsterType.None;
+    public ElementalMonsterType weakness = ElementalMonsterType.None;
 
     // Start is called before the first frame update
     void Start()
@@ -88,7 +90,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isInEncounter && !isInNewPlayer)
+        if (!isInEncounter && !isBusy)
         {
             float horizontalInput = Input.GetAxisRaw("Horizontal");
             float verticalInput = Input.GetAxisRaw("Vertical");
@@ -153,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
     public int MaxHP
     {
-        get { return maxHP; }
+        get { return maxHP + (Level - 1) * 10; }
     }
 
     public int HP
@@ -164,12 +166,12 @@ public class PlayerController : MonoBehaviour
 
     public int Attack
     {
-        get { return attack; }
+        get { return attack + (Level - 1) * 10; } 
     }
 
     public int Defense
     {
-        get { return defense; }
+        get { return defense + (Level - 1) * 10; }
     }
 
     public int Level
@@ -179,7 +181,35 @@ public class PlayerController : MonoBehaviour
 
     public bool TakeDamage(AbilitiesBase ability, ElementalMonster monster)
     {
-        Hp -= ability.Damage;
+        float damage = ability.Damage;
+
+        if (Defense > monster.Attack)
+        {
+            damage *= 0.7f;
+        }
+        else
+        {
+            damage *= 0.9f;
+        }
+
+        damage += (monster.Attack * 0.15f);
+
+        if (ability.Type == monster.main.Type)
+        {
+            damage *= 1.25f;
+        }
+
+        if (ability.Type == strength)
+        {
+            damage *= 0.75f;
+        }
+        else if (ability.Type == weakness)
+        {
+            damage *= 1.25f;
+        }
+
+
+        HP -= (int)damage;
 
         if (Hp <= 0)
         {
@@ -272,5 +302,39 @@ public class PlayerController : MonoBehaviour
         coinsText.text = "Elemental Coins: " + elementalCoins;
 
         nameText.text = "Player: " + name;
+    }
+
+    public void ChangeType(ElementalMonsterType elementType)
+    {
+        type = elementType;
+
+        switch (elementType) 
+        {
+            case ElementalMonsterType.Fire:
+                strength = ElementalMonsterType.Air;
+                weakness = ElementalMonsterType.Water;
+                break;
+            case ElementalMonsterType.Air:
+                strength = ElementalMonsterType.Earth;
+                weakness = ElementalMonsterType.Fire;
+                break;
+            case ElementalMonsterType.Water:
+                strength = ElementalMonsterType.Fire;
+                weakness = ElementalMonsterType.Electric;
+                break;
+            case ElementalMonsterType.Earth:
+                strength = ElementalMonsterType.Electric;
+                weakness = ElementalMonsterType.Air;
+                break;
+            case ElementalMonsterType.Electric:
+                strength = ElementalMonsterType.Water;
+                weakness = ElementalMonsterType.Earth;
+                break;
+            default:
+                strength = ElementalMonsterType.None;
+                weakness = ElementalMonsterType.None;
+                break;
+
+        }
     }
 }

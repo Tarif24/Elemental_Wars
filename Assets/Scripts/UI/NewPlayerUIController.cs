@@ -22,7 +22,7 @@ public class NewPlayerUIController : MonoBehaviour
         {
             Time.timeScale = 0;
             newPlayer.SetActive(true);
-            player.isInNewPlayer = true;
+            player.isBusy = true;
         }
     }
 
@@ -35,30 +35,30 @@ public class NewPlayerUIController : MonoBehaviour
         switch (element) 
         {
             case 0:
-                player.type = ElementalMonsterType.Fire;
+                player.ChangeType(ElementalMonsterType.Fire);
                 break;
 
             case 1:
-                player.type = ElementalMonsterType.Air;
+                player.ChangeType(ElementalMonsterType.Air);
                 break;
 
             case 2:
-                player.type = ElementalMonsterType.Water;
+                player.ChangeType(ElementalMonsterType.Water);
                 break;
 
             case 3:
-                player.type = ElementalMonsterType.Earth;
+                player.ChangeType(ElementalMonsterType.Earth);
                 break;
 
             case 4:
-                player.type = ElementalMonsterType.Electric;
+                player.ChangeType(ElementalMonsterType.Electric);
                 break;
 
             default:
-                player.type = ElementalMonsterType.None;
+                player.ChangeType(ElementalMonsterType.None);
                 break;
         }
-        player.isInNewPlayer = false;
+        player.isBusy = false;
         Time.timeScale = 1.0f;
         newPlayer.SetActive(false);
     }

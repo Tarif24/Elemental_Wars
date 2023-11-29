@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8168e54e1e678f847bd571efacffcf46, type: 3}
-  m_Name: FireMonster
+  m_Name: Flareon
   m_EditorClassIdentifier: 
-  name: Fire Monster
-  monsterSprite: {fileID: 21300000, guid: bbca28110cc50ab4c8034fec66463cf3, type: 3}
+  name: Flareon
+  monsterSprite: {fileID: 21300000, guid: 6cee795ce39884045b9a7df52993380f, type: 3}
   type: 1
-  maxHP: 100
-  attack: 25
-  defense: 50
+  maxHP: 75
+  attack: 35
+  defense: 25
   abilities:
-  - {fileID: 11400000, guid: 969f0dc4d28f8ec45a5e5f64da067c0e, type: 2}
-  - {fileID: 11400000, guid: 7fbbd5ee74d095a46999da539c63e8e5, type: 2}
+  - {fileID: 11400000, guid: 8df1825c6ea9904498fbfc2925d64b41, type: 2}
   - {fileID: 11400000, guid: 5a921c827f07a51498878b0b8f1d1376, type: 2}

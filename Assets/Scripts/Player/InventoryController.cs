@@ -19,6 +19,8 @@ public class InventoryController : MonoBehaviour
     public TextMeshProUGUI attackText;
     public TextMeshProUGUI defenseText;
     public TextMeshProUGUI typeText;
+    public TextMeshProUGUI strengthText;
+    public TextMeshProUGUI weaknessText;
 
 
     // Start is called before the first frame update
@@ -46,12 +48,14 @@ public class InventoryController : MonoBehaviour
     public void OpenInventory()
     {
         inventory.SetActive(true);
+        player.isBusy = true;
         Time.timeScale = 0;
     }
 
     public void CloseInventory()
     {
         inventory.SetActive(false);
+        player.isBusy = false;
         Time.timeScale = 1;
     }
 
@@ -85,6 +89,8 @@ public class InventoryController : MonoBehaviour
         attackText.text = "Attack - " + player.Attack;
         defenseText.text = "Defense - " + player.Defense;
         typeText.text = "Type - " + player.type.ToString();
+        strengthText.text = "Strength - " + player.strength.ToString();
+        weaknessText.text = "Weakness - " + player.weakness.ToString();
     }
 
     public void Back()

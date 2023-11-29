@@ -1,12 +1,12 @@
-Player
-100
-100100
-4
-100
+Tarif
+51
+100200
 0
--1.516842
-3.517123
-Instant Kill
+140
+0
+-0.5026481
+2.524333
+Earth Spike
 Instant Kill
 Fire Storm
 Fire Ball

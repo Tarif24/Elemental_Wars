@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BattleUnitMonster : MonoBehaviour
 {
-    [SerializeField]
     ElementalMonsterBase main;
+
+    List<ElementalMonsterBase> monsters = new List<ElementalMonsterBase>();
 
     int level;
 
@@ -22,6 +24,7 @@ public class BattleUnitMonster : MonoBehaviour
     public void SetUp()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        monsters.AddRange(Resources.LoadAll<ElementalMonsterBase>("ScriptableMonsters/"));
 
         if (isBoss)
         {
@@ -64,6 +67,10 @@ public class BattleUnitMonster : MonoBehaviour
             default:
                 break;
         }
+
+        int randomNum = Random.Range(0, monsters.Count);
+
+        main = monsters[randomNum];
 
         monster = new ElementalMonster(main, level);
 

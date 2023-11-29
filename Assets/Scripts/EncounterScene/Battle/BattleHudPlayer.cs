@@ -10,6 +10,8 @@ public class BattleHudPlayer : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI levelText;
     [SerializeField]
+    TextMeshProUGUI typeText;
+    [SerializeField]
     HPBar hpBar;
 
     PlayerController Player;
@@ -20,6 +22,7 @@ public class BattleHudPlayer : MonoBehaviour
 
         nameText.text = player.Name;
         levelText.text = "Level " + player.Level;
+        typeText.text = "Type " + player.type.ToString();
         hpBar.SetHP((float) player.HP / player.MaxHP);
     }
 
