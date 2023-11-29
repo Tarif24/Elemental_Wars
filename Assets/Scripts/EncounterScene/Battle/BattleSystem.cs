@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, Busy};
+public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, PlayerChoice, Busy};
 
 public class BattleSystem : MonoBehaviour
 {
@@ -84,6 +84,17 @@ public class BattleSystem : MonoBehaviour
 
     }
 
+    void PlayerChoice()
+    {
+        state = BattleState.PlayerChoice;
+
+        dialogBox.EnableActionSelector(false);
+        dialogBox.EnableDialogText(false);
+        dialogBox.EnableAbilitySelector(true);
+
+        dialogBox.SetMoveNames(enemyUnit.monster.Abilities);
+    }
+
     IEnumerator PreformEnemyMove()
     {
         state = BattleState.EnemyMove;
@@ -128,33 +139,10 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"{enemyUnit.monster.main.Name} has been slayin");
             yield return new WaitForSeconds(2f);
 
-            playerUnit.player.isInEncounter = false;
+            yield return dialogBox.TypeDialog($"Now take an ability from {enemyUnit.monster.main.name}");
+            yield return new WaitForSeconds(2f);
 
-            if (enemyUnit.isBoss)
-            {
-                playerUnit.player.bossTier++;
-                int XPTemp = 100 * (playerUnit.player.currentTierLocation + 1);
-                playerUnit.player.XP += XPTemp;
-                int coinsTemp = 250 * (playerUnit.player.currentTierLocation + 1);
-                playerUnit.player.elementalCoins += coinsTemp;
-
-                yield return dialogBox.TypeDialog($"You have recived {XPTemp} XP and {coinsTemp} elemental coins");
-                yield return new WaitForSeconds(3f);
-
-                SceneManager.UnloadSceneAsync(4);
-            }
-            else 
-            {
-                int XPTemp = 25 * (playerUnit.player.currentTierLocation + 1);
-                playerUnit.player.XP += XPTemp;
-                int coinsTemp = 50 * (playerUnit.player.currentTierLocation + 1);
-                playerUnit.player.elementalCoins += coinsTemp;
-
-                yield return dialogBox.TypeDialog($"You have recived {XPTemp} XP and {coinsTemp} elemental coins");
-                yield return new WaitForSeconds(3f);
-
-                SceneManager.UnloadSceneAsync(2);
-            }
+            PlayerChoice();
         }
         else
         {
@@ -162,7 +150,48 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-   private void Update()
+    IEnumerator PreformPlayerChoice()
+    {
+        state = BattleState.Busy;
+
+        AbilitiesBase ability = enemyUnit.monster.Abilities[currentAbility];
+
+        playerUnit.player.Abilities.Insert(0, ability);
+
+        yield return dialogBox.TypeDialog($"You have taken the {ability.name} ability from {enemyUnit.monster.main.Name}");
+        yield return new WaitForSeconds(3f);
+
+        playerUnit.player.isInEncounter = false;
+
+        if (enemyUnit.isBoss)
+        {
+            playerUnit.player.bossTier++;
+            int XPTemp = 100 * (playerUnit.player.currentTierLocation + 1);
+            playerUnit.player.XP += XPTemp;
+            int coinsTemp = 250 * (playerUnit.player.currentTierLocation + 1);
+            playerUnit.player.elementalCoins += coinsTemp;
+
+            yield return dialogBox.TypeDialog($"You have recived {XPTemp} XP and {coinsTemp} elemental coins");
+            yield return new WaitForSeconds(3f);
+
+            SceneManager.UnloadSceneAsync(4);
+        }
+        else
+        {
+            int XPTemp = 25 * (playerUnit.player.currentTierLocation + 1);
+            playerUnit.player.XP += XPTemp;
+            int coinsTemp = 50 * (playerUnit.player.currentTierLocation + 1);
+            playerUnit.player.elementalCoins += coinsTemp;
+
+            yield return dialogBox.TypeDialog($"You have recived {XPTemp} XP and {coinsTemp} elemental coins");
+            yield return new WaitForSeconds(3f);
+
+            SceneManager.UnloadSceneAsync(2);
+        }
+
+    }
+
+    private void Update()
    {
        if (state == BattleState.PlayerAction)
        {
@@ -172,6 +201,10 @@ public class BattleSystem : MonoBehaviour
        {
            HandleAbilitySelection();
        }
+       else if (state == BattleState.PlayerChoice)
+        {
+            HandleAbilityChoiceSelection();
+        }
    }
 
     void HandleAbilitySelection()
@@ -212,6 +245,49 @@ public class BattleSystem : MonoBehaviour
             dialogBox.EnableAbilitySelector(false);
             dialogBox.EnableDialogText(true);
             StartCoroutine(PreformPlayerAbility());
+        }
+    }
+
+    void HandleAbilityChoiceSelection()
+    {
+        currentAbility = 0;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (currentAbility < enemyUnit.monster.Abilities.Count - 1)
+            {
+                ++currentAbility;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (currentAbility > 0)
+            {
+                --currentAbility;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (currentAbility < enemyUnit.monster.Abilities.Count - 2)
+            {
+                currentAbility += 2;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (currentAbility > 1)
+            {
+                currentAbility -= 2;
+            }
+        }
+
+        dialogBox.UpdateAbilitySelection(currentAbility, enemyUnit.monster.Abilities[currentAbility]);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            dialogBox.EnableAbilitySelector(false);
+            dialogBox.EnableDialogText(true);
+            StartCoroutine(PreformPlayerChoice());
         }
     }
 
