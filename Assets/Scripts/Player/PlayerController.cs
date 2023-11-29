@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
     public int healthPotions = 0;
 
     public bool inShopRange = false;
+    public bool inHomeRange = false;
+
 
     public ElementalMonsterType type = ElementalMonsterType.None;
 
@@ -155,6 +157,7 @@ public class PlayerController : MonoBehaviour
     public int HP
     {
         get { return Hp; }
+        set {  Hp = value; }
     }
 
     public int Attack
