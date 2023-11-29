@@ -1,0 +1,12 @@
+Player
+100
+100100
+4
+100
+0
+-1.516842
+3.517123
+Instant Kill
+Instant Kill
+Fire Storm
+Fire Ball

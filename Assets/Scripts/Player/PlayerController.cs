@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     List<AbilitiesBase> abilities;
+
+    [SerializeField]
+    List<AbilitiesBase> allAbilities = new List<AbilitiesBase>();
 
     [SerializeField]
     string name;
@@ -57,6 +62,8 @@ public class PlayerController : MonoBehaviour
     public bool inShopRange = false;
     public bool inHomeRange = false;
 
+    string saveFileName = "PlayerSave.txt";
+
 
     public ElementalMonsterType type = ElementalMonsterType.None;
 
@@ -65,16 +72,11 @@ public class PlayerController : MonoBehaviour
     {
         Hp = MaxHP;
 
+        allAbilities.AddRange(Resources.LoadAll<AbilitiesBase>("ScriptableMoves/"));
+
         if (saveData.isSaveGame)
         {
-            transform.position = saveData.saveLocation;
-            name = saveData.name;
-            abilities = saveData.abilities;
-            level = saveData.level;
-            elementalCoins = saveData.elementalCoins;
-            bossTier = saveData.bossTier;
-            Hp = saveData.hp;
-            currentTierLocation = saveData.currentTierLocation;
+            LoadSave();
         }
 
         XP = level * 100;
@@ -191,14 +193,56 @@ public class PlayerController : MonoBehaviour
 
     public void Save()
     {
-        saveData.saveLocation = transform.position;
-        saveData.name = name;
-        saveData.abilities = abilities;
-        saveData.level = level;
-        saveData.elementalCoins = elementalCoins;
-        saveData.bossTier = bossTier;
-        saveData.hp = Hp;
-        saveData.currentTierLocation = currentTierLocation;
+        StreamWriter sw = new StreamWriter(saveFileName);
+
+        sw.WriteLine(name);
+        sw.WriteLine(level);
+        sw.WriteLine(elementalCoins);
+        sw.WriteLine(bossTier);
+        sw.WriteLine(Hp);
+        sw.WriteLine(currentTierLocation);
+        sw.WriteLine(transform.position.x);
+        sw.WriteLine(transform.position.y);
+
+        foreach (AbilitiesBase a in abilities)
+        {
+            sw.WriteLine(a.Name);
+        }
+
+        sw.Close();
+    }
+
+    public void LoadSave()
+    {
+        abilities.Clear();
+
+        StreamReader sr = new StreamReader(saveFileName);
+
+        name = sr.ReadLine();
+        level = int.Parse(sr.ReadLine());
+        elementalCoins = int.Parse(sr.ReadLine());
+        bossTier = int.Parse(sr.ReadLine());
+        Hp = int.Parse(sr.ReadLine());
+        currentTierLocation = int.Parse(sr.ReadLine());
+        float x = float.Parse(sr.ReadLine());
+        float y = float.Parse(sr.ReadLine());
+        transform.position = new Vector3(x, y, transform.position.z);
+
+        while (!sr.EndOfStream)
+        {
+            string line = sr.ReadLine();
+
+            foreach (AbilitiesBase a in allAbilities)
+            {
+                Debug.Log(a.Name + ',' + line);
+                if (a.Name == line)
+                {
+                    abilities.Add(a);
+                }
+            }
+        }
+
+        sr.Close();
     }
 
     public void MainMenu()

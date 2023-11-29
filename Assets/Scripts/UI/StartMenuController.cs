@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,11 @@ public class StartMenuController : MonoBehaviour
     public void SaveGame()
     {
         saveData.isSaveGame = true;
-        SceneManager.LoadScene(1);
+
+        if (File.Exists("PlayerSave.txt"))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void Credits()
