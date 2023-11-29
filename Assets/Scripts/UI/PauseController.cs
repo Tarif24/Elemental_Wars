@@ -66,9 +66,7 @@ public class PauseController : MonoBehaviour
 
         if (instaKillToggle.isOn)
         {
-            AbilitiesBase temp = player.Abilities[0];
-            player.Abilities[0] = instaKillAbiility;
-            player.Abilities.Add(temp);
+            player.Abilities.Insert(0, instaKillAbiility);
         }
 
         if (allBossesToggle.isOn)
