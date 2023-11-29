@@ -80,8 +80,6 @@ public class PlayerController : MonoBehaviour
         XP = level * 100;
 
         playerAudio = GetComponent<AudioSource>();
-
-        nameText.text = "Player: " + name;
     }
 
     // Update is called once per frame
@@ -227,5 +225,7 @@ public class PlayerController : MonoBehaviour
 
         levelText.text = "Level: " + level;
         coinsText.text = "Elemental Coins: " + elementalCoins;
+
+        nameText.text = "Player: " + name;
     }
 }

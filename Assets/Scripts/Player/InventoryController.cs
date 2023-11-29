@@ -12,6 +12,14 @@ public class InventoryController : MonoBehaviour
     public GameObject inventory;
     public GameObject inventoryItems;
     public GameObject abilitiyChange;
+    public GameObject stats;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI attackText;
+    public TextMeshProUGUI defenseText;
+    public TextMeshProUGUI typeText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,10 +72,26 @@ public class InventoryController : MonoBehaviour
         titleText.text = "Abilities";
     }
 
+    public void Stats()
+    {
+        inventoryItems.SetActive(false);
+        stats.SetActive(true);
+
+        titleText.text = "Stats";
+
+        nameText.text = "Name - " + player.name;
+        levelText.text = "Level - " + player.Level;
+        healthText.text = "Health - " + player.HP + "/" + player.MaxHP;
+        attackText.text = "Attack - " + player.Attack;
+        defenseText.text = "Defense - " + player.Defense;
+        typeText.text = "Type - " + player.type.ToString();
+    }
+
     public void Back()
     {
         inventoryItems.SetActive(true);
         abilitiyChange.SetActive(false);
+        stats.SetActive(false);
 
         titleText.text = "Inventory";
     }
