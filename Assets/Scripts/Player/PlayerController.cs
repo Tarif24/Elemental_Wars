@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour
 
     public int currentTierLocation = 0;
 
+    public int healthPotions = 0;
+
+    public bool inShopRange = false;
+
+    public ElementalMonsterType type = ElementalMonsterType.None;
+
     // Start is called before the first frame update
     void Start()
     {

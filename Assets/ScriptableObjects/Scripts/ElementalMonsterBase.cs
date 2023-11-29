@@ -66,7 +66,7 @@ public enum ElementalMonsterType
     Fire,
     Water,
     Earth,
-    air,
+    Air,
     Electric
 
 }
