@@ -11,7 +11,6 @@ public class InventoryController : MonoBehaviour
     public TextMeshProUGUI healthPotionText;
     public GameObject inventory;
     public GameObject inventoryItems;
-    public GameObject abilitiyChange;
     public GameObject stats;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI levelText;
@@ -68,14 +67,6 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void AllAbilities()
-    {
-        inventoryItems.SetActive(false);
-        abilitiyChange.SetActive(true);
-
-        titleText.text = "Abilities";
-    }
-
     public void Stats()
     {
         inventoryItems.SetActive(false);
@@ -96,7 +87,6 @@ public class InventoryController : MonoBehaviour
     public void Back()
     {
         inventoryItems.SetActive(true);
-        abilitiyChange.SetActive(false);
         stats.SetActive(false);
 
         titleText.text = "Inventory";

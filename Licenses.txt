@@ -2,3 +2,8 @@
 - Cainos (Pixel Art Top Down Basic - Enviorment asset)
 - JTN191 (WalkingOnGrass - Audio Asset)
 - SoftDistortionFX (WalkingOnPavement - Audio Asset)
+- Pokemon Database website (all monster assets)
+- BDragon1727 (UI assets)
+- Cania (Backgound assets)
+- Robert Brooks - gamedeveloperstudio.com (icon assets)
+- Ravenmore (more icon assets)
