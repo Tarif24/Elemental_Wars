@@ -1,12 +1,11 @@
 Tarif
-51
-100200
+5
+100
 0
 140
 0
--0.5026481
-2.524333
-Earth Spike
+3.997657
+1.312879
 Instant Kill
 Fire Storm
 Fire Ball

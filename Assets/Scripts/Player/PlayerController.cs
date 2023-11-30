@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     string saveFileName = "PlayerSave.txt";
 
+    private Animator animator;
+
 
     public ElementalMonsterType type = ElementalMonsterType.None;
     public ElementalMonsterType strength = ElementalMonsterType.None;
@@ -85,6 +87,8 @@ public class PlayerController : MonoBehaviour
         XP = level * 100;
 
         playerAudio = GetComponent<AudioSource>();
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -98,6 +102,8 @@ public class PlayerController : MonoBehaviour
             if (horizontalInput == 0 && verticalInput == 0)
             {
                 isMoving = false;
+
+
             }
             else
             {
@@ -138,8 +144,28 @@ public class PlayerController : MonoBehaviour
             playerAudio.Stop();
         }
 
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            animator.SetInteger("Direction", 2);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            animator.SetInteger("Direction", 3);
+        }
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            animator.SetInteger("Direction", 1);
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            animator.SetInteger("Direction", 4);
+        }
+
         level = XP / 100;
         UpdateHUD();
+
+        animator.SetBool("isMoving", isMoving);
     }
 
     public List<AbilitiesBase> Abilities
