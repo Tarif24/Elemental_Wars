@@ -21,6 +21,8 @@ public class PauseController : MonoBehaviour
 
     PlayerController player;
 
+    public AudioSource buttonSound;
+
     public AbilitiesBase instaKillAbiility;
 
     private void Start()
@@ -38,6 +40,7 @@ public class PauseController : MonoBehaviour
 
     public void Menu()
     {
+        buttonSound.Play();
         Save();
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
@@ -45,11 +48,13 @@ public class PauseController : MonoBehaviour
 
     public void Save()
     {
+        buttonSound.Play();
         player.Save();
     }
 
     public void Cheats()
     {
+        buttonSound.Play();
         buttons.SetActive(false);
         cheats.SetActive(true);
         titleText.text = "CHEATS";
@@ -57,6 +62,7 @@ public class PauseController : MonoBehaviour
 
     public void Apply()
     {
+        buttonSound.Play();
         buttons.SetActive(true);
         cheats.SetActive(false);
         titleText.text = "PAUSE";
@@ -78,12 +84,14 @@ public class PauseController : MonoBehaviour
 
     public void Resume()
     {
+        buttonSound.Play();
         pause.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void Pause()
     {
+        buttonSound.Play();
         pause.SetActive(true);
         Time.timeScale = 0;
     }

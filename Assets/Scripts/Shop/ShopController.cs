@@ -10,6 +10,8 @@ public class ShopController : MonoBehaviour
 
     PlayerController player;
 
+    public AudioSource buttonSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class ShopController : MonoBehaviour
 
     public void OpenShop()
     {
+        buttonSound.Play();
         shop.SetActive(true);
         player.isBusy = true;
         Time.timeScale = 0;
@@ -39,6 +42,7 @@ public class ShopController : MonoBehaviour
 
     public void CloseShop()
     {
+        buttonSound.Play();
         shop.SetActive(false);
         player.isBusy = false;
         Time.timeScale = 1;
@@ -46,6 +50,7 @@ public class ShopController : MonoBehaviour
 
     public void HealthPotion()
     {
+        buttonSound.Play();
         if (player.elementalCoins - 75 >= 0)
         {
             player.elementalCoins -= 75;
@@ -55,6 +60,7 @@ public class ShopController : MonoBehaviour
 
     public void XP()
     {
+        buttonSound.Play();
         if (player.elementalCoins - 150 >= 0)
         {
             player.elementalCoins -= 150;
@@ -64,6 +70,7 @@ public class ShopController : MonoBehaviour
 
     public void ElementChange()
     {
+        buttonSound.Play();
         if (player.elementalCoins - 250 >= 0)
         {
             player.elementalCoins -= 250;
@@ -75,6 +82,7 @@ public class ShopController : MonoBehaviour
 
     public void Fire()
     {
+        buttonSound.Play();
         player.ChangeType(ElementalMonsterType.Fire);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
@@ -82,6 +90,7 @@ public class ShopController : MonoBehaviour
 
     public void Air()
     {
+        buttonSound.Play();
         player.ChangeType(ElementalMonsterType.Air);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
@@ -89,6 +98,7 @@ public class ShopController : MonoBehaviour
 
     public void Water()
     {
+        buttonSound.Play();
         player.ChangeType(ElementalMonsterType.Water);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
@@ -96,6 +106,7 @@ public class ShopController : MonoBehaviour
 
     public void Earth()
     {
+        buttonSound.Play();
         player.ChangeType(ElementalMonsterType.Earth);
         shopItems.SetActive(true);
         elementChange.SetActive(false);
@@ -103,6 +114,7 @@ public class ShopController : MonoBehaviour
 
     public void Electric()
     {
+        buttonSound.Play();
         player.ChangeType(ElementalMonsterType.Electric);
         shopItems.SetActive(true);
         elementChange.SetActive(false);

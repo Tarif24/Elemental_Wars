@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Rendering.FilterWindow;
 
 public class PlayerController : MonoBehaviour
 {
@@ -261,6 +262,7 @@ public class PlayerController : MonoBehaviour
         sw.WriteLine(currentTierLocation);
         sw.WriteLine(transform.position.x);
         sw.WriteLine(transform.position.y);
+        sw.WriteLine(type.ToString());
 
         foreach (AbilitiesBase a in abilities)
         {
@@ -285,6 +287,33 @@ public class PlayerController : MonoBehaviour
         float x = float.Parse(sr.ReadLine());
         float y = float.Parse(sr.ReadLine());
         transform.position = new Vector3(x, y, transform.position.z);
+
+        switch (sr.ReadLine())
+        {
+            case "Fire":
+                ChangeType(ElementalMonsterType.Fire);
+                break;
+
+            case "Air":
+                ChangeType(ElementalMonsterType.Air);
+                break;
+
+            case "Water":
+                ChangeType(ElementalMonsterType.Water);
+                break;
+
+            case "Earth":
+                ChangeType(ElementalMonsterType.Earth);
+                break;
+
+            case "Electric":
+                ChangeType(ElementalMonsterType.Electric);
+                break;
+
+            default:
+                ChangeType(ElementalMonsterType.None);
+                break;
+        }
 
         while (!sr.EndOfStream)
         {

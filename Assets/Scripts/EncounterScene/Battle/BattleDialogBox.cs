@@ -71,12 +71,12 @@ public class BattleDialogBox : MonoBehaviour
         {
             if (i == selected)
             {
-                abilityTexts[i].color = Color.red;
+                abilityTexts[i].color = Color.yellow;
                 abilityTexts[i].alpha = 255f;
             }
             else
             {
-                abilityTexts[i].color = Color.black;
+                abilityTexts[i].color = Color.white;
                 abilityTexts[i].alpha = 255f;
             }
 
@@ -91,12 +91,12 @@ public class BattleDialogBox : MonoBehaviour
         {
             if (i == selected)
             {
-                actionTexts[i].color = Color.red; 
+                actionTexts[i].color = Color.yellow; 
                 actionTexts[i].alpha = 255f; 
             }
             else
             {
-                actionTexts[i].color = Color.black;
+                actionTexts[i].color = Color.white;
                 actionTexts[i].alpha = 255f;
             }
         

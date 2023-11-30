@@ -1,11 +1,13 @@
 Tarif
-5
-100
+57
+100100
 0
 140
 0
-3.997657
-1.312879
+4.656601
+2.151782
+Fire
 Instant Kill
-Fire Storm
-Fire Ball
+Fire Blast
+Water Whip
+Air Slice

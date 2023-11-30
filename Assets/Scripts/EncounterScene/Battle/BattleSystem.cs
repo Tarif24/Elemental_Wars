@@ -18,6 +18,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField]
     BattleDialogBox dialogBox;
 
+    public AudioSource buttonSound;
+
     BattleState state;
 
     int currentAction;
@@ -43,7 +45,7 @@ public class BattleSystem : MonoBehaviour
 
             if (enemyUnit.isBoss)
             {
-                SceneManager.UnloadSceneAsync(4);
+                SceneManager.UnloadSceneAsync(3);
             }
             else
             {
@@ -176,7 +178,7 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"You have recived {XPTemp} XP and {coinsTemp} elemental coins");
             yield return new WaitForSeconds(3f);
 
-            SceneManager.UnloadSceneAsync(4);
+            SceneManager.UnloadSceneAsync(3);
         }
         else
         {
@@ -213,6 +215,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            buttonSound.Play();
             if (currentAbility < playerUnit.player.Abilities.Count - 1)
             {
                 ++currentAbility;
@@ -220,6 +223,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            buttonSound.Play();
             if (currentAbility > 0)
             {
                 --currentAbility;
@@ -227,6 +231,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            buttonSound.Play();
             if (currentAbility < playerUnit.player.Abilities.Count - 2)
             {
                 currentAbility += 2;
@@ -234,6 +239,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            buttonSound.Play();
             if (currentAbility > 1)
             {
                 currentAbility -= 2;
@@ -244,6 +250,7 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            buttonSound.Play();
             dialogBox.EnableAbilitySelector(false);
             dialogBox.EnableDialogText(true);
             StartCoroutine(PreformPlayerAbility());
@@ -254,6 +261,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            buttonSound.Play();
             if (currentAbility < enemyUnit.monster.Abilities.Count - 1)
             {
                 ++currentAbility;
@@ -261,6 +269,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            buttonSound.Play();
             if (currentAbility > 0)
             {
                 --currentAbility;
@@ -268,6 +277,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            buttonSound.Play();
             if (currentAbility < enemyUnit.monster.Abilities.Count - 2)
             {
                 currentAbility += 2;
@@ -275,6 +285,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            buttonSound.Play();
             if (currentAbility > 1)
             {
                 currentAbility -= 2;
@@ -285,6 +296,7 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            buttonSound.Play();
             dialogBox.EnableAbilitySelector(false);
             dialogBox.EnableDialogText(true);
             StartCoroutine(PreformPlayerChoice());
@@ -295,7 +307,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-
+            buttonSound.Play();
             if (currentAction > 0)
             {
                 --currentAction;
@@ -303,7 +315,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-
+            buttonSound.Play();
             if (currentAction < 1)
             {
                 ++currentAction;
@@ -314,6 +326,7 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            buttonSound.Play();
             if (currentAction == 0)
             {
                 PlayerMove();
@@ -324,7 +337,7 @@ public class BattleSystem : MonoBehaviour
              
                 if (enemyUnit.isBoss)
                 {
-                    SceneManager.UnloadSceneAsync(4);
+                    SceneManager.UnloadSceneAsync(3);
                 }
                 else
                 {

@@ -21,6 +21,8 @@ public class InventoryController : MonoBehaviour
     public TextMeshProUGUI strengthText;
     public TextMeshProUGUI weaknessText;
 
+    public AudioSource buttonSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,7 @@ public class InventoryController : MonoBehaviour
 
     public void OpenInventory()
     {
+        buttonSound.Play();
         inventory.SetActive(true);
         player.isBusy = true;
         Time.timeScale = 0;
@@ -53,6 +56,7 @@ public class InventoryController : MonoBehaviour
 
     public void CloseInventory()
     {
+        buttonSound.Play();
         inventory.SetActive(false);
         player.isBusy = false;
         Time.timeScale = 1;
@@ -60,6 +64,7 @@ public class InventoryController : MonoBehaviour
 
     public void HealthPotions()
     {
+        buttonSound.Play();
         if (player.healthPotions > 0 && player.HP < player.MaxHP)
         {
             player.HP = player.MaxHP;
@@ -69,6 +74,7 @@ public class InventoryController : MonoBehaviour
 
     public void Stats()
     {
+        buttonSound.Play();
         inventoryItems.SetActive(false);
         stats.SetActive(true);
 
@@ -86,6 +92,7 @@ public class InventoryController : MonoBehaviour
 
     public void Back()
     {
+        buttonSound.Play();
         inventoryItems.SetActive(true);
         stats.SetActive(false);
 

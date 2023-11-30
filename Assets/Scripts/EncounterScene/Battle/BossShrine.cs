@@ -31,7 +31,7 @@ public class BossShrine : MonoBehaviour
         {
             player.GetComponent<PlayerController>().isInEncounter = true;
 
-            SceneManager.LoadScene(4, LoadSceneMode.Additive);
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
     }
 

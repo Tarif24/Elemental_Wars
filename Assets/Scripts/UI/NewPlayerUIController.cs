@@ -13,6 +13,8 @@ public class NewPlayerUIController : MonoBehaviour
 
     PlayerController player;
 
+    public AudioSource buttonSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class NewPlayerUIController : MonoBehaviour
 
     public void Enter()
     {
+        buttonSound.Play();
         player.Name = nameInput.text;
 
         int element = elementDropDown.value;

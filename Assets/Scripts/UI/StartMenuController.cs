@@ -12,15 +12,20 @@ public class StartMenuController : MonoBehaviour
     public GameObject menu;
     public GameObject credits;
 
+    public AudioSource buttonSound;
+
     public void NewGame()
     {
         saveData.isSaveGame = false;
+        buttonSound.Play();
         SceneManager.LoadScene(1);
     }
 
     public void SaveGame()
     {
         saveData.isSaveGame = true;
+
+        buttonSound.Play();
 
         if (File.Exists("PlayerSave.txt"))
         {
@@ -30,18 +35,21 @@ public class StartMenuController : MonoBehaviour
 
     public void Credits()
     {
+        buttonSound.Play();
         menu.SetActive(false);
         credits.SetActive(true);
     }
 
     public void MainMenu()
     {
+        buttonSound.Play();
         menu.SetActive(true);
         credits.SetActive(false);
     }
 
     public void Quit()
     {
+        buttonSound.Play();
         Debug.Log("Quit");
         Application.Quit();
     }
