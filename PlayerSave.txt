@@ -1,12 +1,15 @@
 Tarif
-57
-100100
+53
+99725
+2
+487
 0
-140
-0
-4.656601
-2.151782
+0.4628734
+-1.085441
 Fire
+Fire Ball
+Water Wave
+Fire Wall
 Instant Kill
 Fire Blast
 Water Whip
