@@ -7,3 +7,4 @@
 - Cania (Backgound assets)
 - Robert Brooks - gamedeveloperstudio.com (icon assets)
 - Ravenmore (more icon assets)
+- AxulArt (player asset)

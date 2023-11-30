@@ -191,8 +191,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1697775413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.31782803}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMin: {x: 0, y: 0.66658616}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1524,8 +1524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 14.833618, y: -372.5508}
-  m_SizeDelta: {x: 981.2943, y: 745.1016}
+  m_AnchoredPosition: {x: 14.833618, y: -436.44876}
+  m_SizeDelta: {x: 981.2943, y: 872.8976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &916940779
 MonoBehaviour:
@@ -2533,8 +2533,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 14.833618, y: -84.96634}
-  m_SizeDelta: {x: 981.2943, y: 169.9327}
+  m_AnchoredPosition: {x: 14.833618, y: -173.84299}
+  m_SizeDelta: {x: 981.2943, y: 347.686}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572224843
 MonoBehaviour:
@@ -2559,15 +2559,28 @@ MonoBehaviour:
   m_text: 'Licenses:
 
 
-    - Clembod (Bringer of Death - Character asset)
+    - Cainos (Pixel Art Top Down Basic - Enviorment asset)
 
     -
-    Cainos (Pixel Art Top Down Basic - Enviorment asset)
+    JTN191 (WalkingOnGrass - Audio Asset)
 
-    - JTN191 (WalkingOnGrass
+    - SoftDistortionFX (WalkingOnPavement
     - Audio Asset)
 
-    - SoftDistortionFX (WalkingOnPavement - Audio Asset)'
+    - Pokemon Database website (all monster assets)
+
+    -
+    BDragon1727 (UI assets)
+
+    - Cania (Backgound assets)
+
+    - Robert Brooks
+    - gamedeveloperstudio.com (icon assets)
+
+    - Ravenmore (more icon assets)
+
+    -
+    AxulArt (player asset)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3087,8 +3100,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 93985312}
   m_HandleRect: {fileID: 93985311}
   m_Direction: 2
-  m_Value: 0.9999997
-  m_Size: 0.6821719
+  m_Value: 1
+  m_Size: 0.3334138
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3250,7 +3263,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2085788344}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.1555805
+  m_Size: 0.13280287
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3726,7 +3739,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 124213956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.8444195}
+  m_AnchorMin: {x: 0, y: 0.86719716}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
